@@ -36,10 +36,10 @@ export const store = createStore({
     actions: {
         fetchProducts({ commit }) {
             console.log(commit)
-            fetch('/data.json')
+            fetch('/test-vue/data.json')
                 .then(response => response.json())
                 .then(data => {
-                    fetch('/names.json')
+                    fetch('/test-vue/names.json')
                         .then(response => response.json())
                         .then(names => {
                             const products = data.Value.Goods.map(good => ({name: names[good.G].B[good.T].N, price: good.C, count: good.P, group: names[good.G].G}));
