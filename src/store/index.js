@@ -18,7 +18,7 @@ export const store = createStore({
         ADD_TO_CART(state, product) {
             const cartItem = state.cart.find(item => item.name === product.name);
             if (cartItem) {
-                cartItem.quantity++;
+                if (product.count > cartItem.quantity) cartItem.quantity++;
             } else {
                 state.cart.push({ ...product, quantity: 1 });
             }
@@ -35,7 +35,6 @@ export const store = createStore({
     },
     actions: {
         fetchProducts({ commit }) {
-            console.log(commit)
             fetch('/test-vue/data.json')
                 .then(response => response.json())
                 .then(data => {

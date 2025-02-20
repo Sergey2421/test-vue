@@ -15,5 +15,5 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
-  base: '/test-vue'
+  base: 'https://Sergey2421.github.io/test-vue/'
 })
