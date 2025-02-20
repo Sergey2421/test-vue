@@ -13,7 +13,14 @@ export const store = createStore({
             state.products = products;
         },
         SET_GROUPS(state, groups) {
-            state.groups = groups;
+            state.groups = groups.map(ng => {
+                const currentGroupIndex = state.groups.findIndex(g => g.name === ng.name);
+                if (currentGroupIndex !== -1) {
+                    return {...ng, visible: state.groups[currentGroupIndex].visible}
+                } else {
+                    return {...ng}
+                }
+            });
         },
         ADD_TO_CART(state, product) {
             const cartItem = state.cart.find(item => item.name === product.name);
